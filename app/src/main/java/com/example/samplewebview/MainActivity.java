@@ -36,6 +36,25 @@ public class MainActivity extends AppCompatActivity {
         down_anim = AnimationUtils.loadAnimation(this, R.anim.down_flow);
         up_anim = AnimationUtils.loadAnimation(this, R.anim.up_flow);
 
+        up_anim.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                layout.setVisibility(View.GONE);
+                up_btn.setVisibility(View.GONE);
+                down_btn.setVisibility(View.VISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
         up_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                up_btn.setVisibility(View.GONE);
-                down_btn.setVisibility(View.VISIBLE);
-                layout.setVisibility(View.GONE);
                 layout.startAnimation(up_anim);
             }
         });
